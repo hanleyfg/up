@@ -1,1 +1,534 @@
- <!DOCTYPE html> <html xmlns="http://www.w3.org/1999/xhtml"> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta http-equiv="X-UA-Compatible" content="IE=edge,11,10,9">     <meta name="viewport" content="width=device-width, initial-scale=1">     <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script> </head>  <body ontouchstart="">     <!-- 048 -->     <style type="text/css">         body {margin:12px; background:#fffff0; color:#303030; font-size:13px; font-family:Warnock,Georgia,Helvetica,Arial,Microsoft YaHei; line-height:24px;}         .cssload-crazy-arrow {position:fixed; top:0px; left:0px; right:0px; bottom:0px; margin:auto; width:32px; height:32px; border:3px solid #ff8000; background-color:#ff80ff; border-top-left-radius:50%; border-bottom-right-radius:50%; border-bottom-left-radius:50%; box-shadow:0px 0px 5px 3px rgba(255,255,224,0.8) inset; display:none; z-index:99999; animation: cssload-spin 1000ms infinite linear; -o-animation: cssload-spin 1000ms infinite linear; -ms-animation: cssload-spin 1000ms infinite linear; -webkit-animation: cssload-spin 1000ms infinite linear; -moz-animation: cssload-spin 1000ms infinite linear;}         @keyframes cssload-spin {100%{transform: rotate(360deg); transform: rotate(360deg);}}         @-o-keyframes cssload-spin {100%{-o-transform: rotate(360deg); transform: rotate(360deg);}}         @-ms-keyframes cssload-spin {100%{-ms-transform: rotate(360deg); transform: rotate(360deg);}}         @-webkit-keyframes cssload-spin {100%{-webkit-transform: rotate(360deg); transform: rotate(360deg);}}         @-moz-keyframes cssload-spin {100%{-moz-transform: rotate(360deg); transform: rotate(360deg);}}     </style>      <div id="ooWait" class="cssload-crazy-arrow"></div>     <div id="ooHead"></div>    <div class="main">     <div id="ooLogin" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">       <p>　　登入名称　<input id="ooLoginN" type="text" style="width:180px; border-width:0px;"></p>       <p>　　登入密码　<input id="ooLoginP" type="password" style="width:180px; border-width:0px;"></p>       <div class="buttoncontainer"><div class="button2"><a href="javascript:void(0);" onclick="javascript:Load('opLogin'         +'&loginn='+encodeURIComponent(document.getElementById('ooLoginN').value)         +'&loginp='+encodeURIComponent(document.getElementById('ooLoginP').value)         +'&from='+ooFrom);"><font class="link">登入</font></a></div></div>         <p style="text-align:center;"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogin').style.display='none';document.getElementById('ooLogup').style.display='block';"><font class="linv">注册新号</font></a></p>       <div id="ooLoginR" class="erro"></div>     </div></div></div>      <div id="ooLogup" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">       <p>　　注册名称　<input id="ooLogupN" type="text" style="width:180px; border-width:0px;"></p>       <p>　　注册密码　<input id="ooLogupP" type="password" style="width:180px; border-width:0px;"></p>       <p>　　重复密码　<input id="ooLogupQ" type="password" style="width:180px; border-width:0px;"></p>       <div class="buttoncontainer"><div class="button2"><a href="javascript:void(0);" onclick="javascript:Load('opLogup'         +'&logupn='+encodeURIComponent(document.getElementById('ooLogupN').value)         +'&logupp='+encodeURIComponent(document.getElementById('ooLogupP').value)         +'&logupq='+encodeURIComponent(document.getElementById('ooLogupQ').value)         +'&from='+ooFrom);"><font class="link">注册</font></a></div></div>       <p style="text-align:center;"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogin').style.display='block';document.getElementById('ooLogup').style.display='none';"><font class="linv">登入现有号</font></a></p>       <div id="ooLogupR" class="erro"></div>     </div></div></div>      <div id="ooLogot" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">       <div id="ooLogotN" style="text-align:center; font-size:15px; color:#d000ff;"></div>       <div style="height:6px;"></div>       <div class="buttoncontainer"><div class="button2"><a href="javascript:void(0);" onclick="javascript:ooUser='';ooPass='';document.getElementById('ooLogin').style.display='block';document.getElementById('ooLogot').style.display='none';"><font class="link">登出</font></a></div></div>       <p style="text-align:center;"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogot').style.display='none';document.getElementById('ooLognk').style.display='block';"><font class="linv">修改昵称</font></a>         &nbsp;<a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogot').style.display='none';document.getElementById('ooLogpw').style.display='block';"><font class="linv">修改密码</font></a>         &nbsp;<a href="javascript:void(0);" onclick="javascript:Load('opLike'+'&ooUser='+encodeURIComponent(ooUser)+'&ooPass='+encodeURIComponent(ooPass));"><font class="linv">我的收藏</font></a></p>     </div></div></div>      <div id="ooLogpw" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">       <p>　　现有密码　<input id="ooLogpwO" type="password" style="width:180px; border-width:0px;"></p>       <p>　　更新密码　<input id="ooLogpwP" type="password" style="width:180px; border-width:0px;"></p>       <p>　　重复密码　<input id="ooLogpwQ" type="password" style="width:180px; border-width:0px;"></p>       <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:Load('opLogpw'         +'&logpwn='+encodeURIComponent(ooUser)         +'&logpwo='+encodeURIComponent(document.getElementById('ooLogpwO').value)         +'&logpwp='+encodeURIComponent(document.getElementById('ooLogpwP').value)         +'&logpwq='+encodeURIComponent(document.getElementById('ooLogpwQ').value)         +'&from='+ooFrom);"><font class="link">修改密码</font></a></div></div>       <div id="ooLogpwR" class="erro"></div>     </div></div></div>      <div id="ooLognk" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">       <p>　　现有密码　<input id="ooLognkP" type="password" style="width:180px; border-width:0px;"></p>       <p>　　更新昵称　<input id="ooLognkK" type="text" style="width:180px; border-width:0px;"></p>       <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:Load('opLognk'         +'&lognkn='+encodeURIComponent(ooUser)         +'&lognkp='+encodeURIComponent(document.getElementById('ooLognkP').value)         +'&lognkk='+encodeURIComponent(document.getElementById('ooLognkK').value)         +'&from='+ooFrom);"><font class="link">修改昵称</font></a></div></div>       <div id="ooLognkR" class="erro"></div>     </div></div></div>      <div id="ogQuit" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">       <p>&#x6211;&#x53EB;&#xFF08;&#x53EF;&#x4EE5;&#x5316;&#x540D;&#xFF09;<input id="ogQuitN" type="text" style="width:180px; border-width:0px;"></p>       <p>&#x6211;&#x8981;&#xFF08;&#x53EF;&#x4EE5;&#x591A;&#x9009;&#xFF09;         <input id="ogQuit1" type="checkbox">&#x9000;&#x515A;         <input id="ogQuit2" type="checkbox">&#x9000;&#x56E2;         <input id="ogQuit3" type="checkbox">&#x9000;&#x961F;</p>       <p>&#x4EBA;&#x6570;&#xFF08;&#x53EF;&#x4EE5;&#x591A;&#x4EBA;&#xFF09;<input id="ogQuitC" type="text" style="width:180px; border-width:0px;"></p>       <p>&#x60F3;&#x8BF4;&#xFF08;&#x53EF;&#x4EE5;&#x9009;&#x586B;&#xFF09;<textarea id="ogQuitS" style="width:180px; border-width:0px;"></textarea></p>       <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:Load('opQuit'         +'&quitn='+encodeURIComponent(document.getElementById('ogQuitN').value)         +'&quit1='+encodeURIComponent(document.getElementById('ogQuit1').checked)         +'&quit2='+encodeURIComponent(document.getElementById('ogQuit2').checked)         +'&quit3='+encodeURIComponent(document.getElementById('ogQuit3').checked)         +'&quitc='+encodeURIComponent(document.getElementById('ogQuitC').value)         +'&quits='+encodeURIComponent(document.getElementById('ogQuitS').value)         +'&from='+ooFrom);">&#x6211;&#x8981;&#x529E;&#x7406;&#x4E09;&#x9000;</a></div></div>       <div id="ogQuitR" style="color:#ff0000"></div>       <div style="height:20px;"></div>       <p>&#x67E5;&#x8BE2;&#x5BC6;&#x7801;&#xFF08;&#x7F16;&#x53F7;&#xFF09;<input id="ogFindP" type="text" style="width:180px; border-width:0px;"></p>       <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:Load('opFind'         +'&findp='+encodeURIComponent(document.getElementById('ogFindP').value));">&#x662F;&#x5426;&#x529E;&#x7406;&#x6210;&#x529F;</a></div></div>       <div id="ogFindR" style="color:#ff0000"></div>       <div style="height:20px;"></div>     </div></div></div>      <div id="ogBack" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">       <p>&#x624B;&#x673A;&#xFF08;&#x53EF;&#x9009;&#x586B;&#xFF09;<input id="ogBackP" type="text" style="width:180px; border-width:0px;"></p>       <p>&#x7535;&#x90AE;&#xFF08;&#x53EF;&#x9009;&#x586B;&#xFF09;<input id="ogBackM" type="text" style="width:180px; border-width:0px;"></p>       <p>&#x53CD;&#x9988;&#xFF08;&#x542B;&#x4FB5;&#x6743;&#xFF09;<textarea id="ogBackF" style="width:180px; height:120px; border-width:0px;"></textarea></p>       <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:Load('opBack'         +'&backp='+encodeURIComponent(document.getElementById('ogBackP').value)         +'&backm='+encodeURIComponent(document.getElementById('ogBackM').value)         +'&backf='+encodeURIComponent(document.getElementById('ogBackF').value)         +'&from='+ooFrom);">&#x53CD;&#x9988;</a></div></div>       <div id="ogBackR" style="color:#ff0000"></div>       <div style="height:20px;"></div>     </div></div></div>   </div>     <div id="ooBody" class="main"></div>     <div id="ooFoot"></div>      <div style="clear:both; height:10px;"></div>      <script>     var ooFind="";     var ooFrom="";     var ooUser="";     var ooPass="";      var slideIndex = 1;     function plusSlides(n) {showSlides(slideIndex += n);}     function showSlides(n) {       var i;       var slides = document.getElementsByClassName("slide");       var dots = document.getElementsByClassName("sldot");       slideIndex = n;       if (n > slides.length) {slideIndex = 1}           if (n < 1) {slideIndex = slides.length}       for (i = 0; i < dots.length; i++) {dots[i].className = dots[i].className.replace(" active", "");}       dots[slideIndex-1].className += " active";       for (i = 0; i < slides.length; i++) {slides[i].style.display = "none";}       slides[slideIndex-1].style.display = "block";     }      var audioPlayer = new Audio();     audioPlayer.onended = function(){document.getElementsByClassName('player-container')[0].className='player-container';};      function Init() {       var q=location.search;       var f="";       if (q!="") q=q.substr(1);       if (q.indexOf("from=")>=0) {f=q.substring(q.indexOf("from=")); q=q.substring(0,q.indexOf("from="));}       if (q.indexOf("key=")>=0) {k=q.substring(q.indexOf("key=")); q=q.substring(0,q.indexOf("key=")).replace("&","");}       if (location.hash!="") q=location.hash.substring(1);       if (q=="") q="ogHome"; else q=q.replace("name=","");       if (f=="") f="ogHomeg"; else f=f.replace("from=","");       ooFrom=f;       ooFind=q;       Load("ogHead");     }      function Load(search) {       document.getElementById("ooWait").style.display = "block";        if (search.indexOf("ogUser.aspx")<0) {         document.getElementById("ooLogin").style.display = "none";         document.getElementById("ooLogup").style.display = "none";         document.getElementById("ooLogot").style.display = "none";         document.getElementById("ooLogpw").style.display = "none";         document.getElementById("ooLognk").style.display = "none";       }       else if (ooUser == "") {         document.getElementById("ooLoginR").innerHTML = "";         document.getElementById("ooLogupR").innerHTML = "";         document.getElementById("ooLogin").style.display = "block";         document.getElementById("ooLogup").style.display = "none";         document.getElementById("ooLogot").style.display = "none";         document.getElementById("ooLogpw").style.display = "none";         document.getElementById("ooLognk").style.display = "none";         document.getElementById("ooWait").style.display = "none";         window.scrollTo(0,0);         return;       }       else {         document.getElementById("ooLogpwR").innerHTML = "";         document.getElementById("ooLognkR").innerHTML = "";         document.getElementById("ooLogin").style.display = "none";         document.getElementById("ooLogup").style.display = "none";         document.getElementById("ooLogot").style.display = "block";         document.getElementById("ooLogpw").style.display = "none";         document.getElementById("ooLognk").style.display = "none";         document.getElementById("ooWait").style.display = "none";         window.scrollTo(0,0);         return;       }       if (search.indexOf("ogQuit.aspx")<0) document.getElementById("ogQuit").style.display = "none";       else {         document.getElementById("ogQuitR").innerHTML = "";         document.getElementById("ogFindR").innerHTML = "";         document.getElementById("ogQuit").style.display = "block";         search="ogQuit"+"&from="+ooFrom;       }       if (search.indexOf("ogBack.aspx")<0) document.getElementById("ogBack").style.display = "none";       else {         document.getElementById("ogBackR").innerHTML = "";         document.getElementById("ogBack").style.display = "block";         search="ogBack"+"&from="+ooFrom;       }        if (search.indexOf("opLogin&")==0) {         document.getElementById("ooLoginR").innerHTML = "";         document.getElementById("ooLogin").style.display = "block";       }       if (search.indexOf("opLogup&")==0) {         document.getElementById("ooLogupR").innerHTML = "";         document.getElementById("ooLogup").style.display = "block";       }       if (search.indexOf("opLogpw&")==0) {         document.getElementById("ooLogpwR").innerHTML = "";         document.getElementById("ooLogpw").style.display = "block";       }       if (search.indexOf("opLognk&")==0) {         document.getElementById("ooLognkR").innerHTML = "";         document.getElementById("ooLognk").style.display = "block";       }       if (search.indexOf("opQuit&")==0) {         document.getElementById("ogQuitR").innerHTML = "";         document.getElementById("ogQuit").style.display = "block";       }       if (search.indexOf("opFind&")==0) {         document.getElementById("ogFindR").innerHTML = "";         document.getElementById("ogQuit").style.display = "block";       }       if (search.indexOf("opBack&")==0) {         document.getElementById("ogBackR").innerHTML = "";         document.getElementById("ogBack").style.display = "block";       }       if (search.indexOf(".aspx")>0 || search.indexOf("r")==0) Test(search);       else Test(search);     }      function Show(search, data) {       document.getElementById("ooWait").style.display = "none";        var name=search;       if (name.indexOf("&")>0) name=name.substring(0,search.indexOf("&"));       if (name.indexOf("~")>0) name=name.substring(0,search.indexOf("~"));       var id=name;       if (id.indexOf("_")>0) id=id.substring(0,search.indexOf("_"));       id = decodeURI(id);        if (search.indexOf("i")==0) {           document.getElementById(id).innerHTML=data;           if (data.indexOf("请先登入")==0) Load("ogUser.aspx");       }       else if (search.indexOf("v")==0) {           document.getElementById(id).innerHTML=data;       }       else if (search.indexOf("b")==0) {           document.getElementById(id).innerHTML=data;           window.scrollTo(0,$("#"+id).offset().top-60);       }       else if (search.indexOf("opLogin&")==0) {document.getElementById("ooLoginR").innerHTML = data;         if (data.indexOf("登入成功")==0) {           ooUser=document.getElementById('ooLoginN').value;           ooPass=document.getElementById('ooLoginP').value;           document.getElementById("ooLogotN").innerHTML=data.substring(4);           document.getElementById('ooLogin').style.display='none';           document.getElementById('ooLogot').style.display='block';           document.getElementById("ooLoginN").value='';           document.getElementById("ooLoginP").value='';           document.getElementById("ooLoginR").innerHTML='';         }}       else if (search.indexOf("opLogup&")==0) {document.getElementById("ooLogupR").innerHTML = data;         if (data.indexOf("注册成功")==0) {           ooUser=document.getElementById('ooLogupN').value;           ooPass=document.getElementById('ooLogupP').value;           document.getElementById("ooLogotN").innerHTML=data.substring(4);           document.getElementById('ooLogup').style.display='none';           document.getElementById('ooLogot').style.display='block';           document.getElementById("ooLogupN").value='';           document.getElementById("ooLogupP").value='';           document.getElementById("ooLogupQ").value='';           document.getElementById("ooLogupR").innerHTML='';         }}       else if (search.indexOf("opLogpw&")==0) {document.getElementById("ooLogpwR").innerHTML = data;         if (data.indexOf("修改密码成功")==0) {           document.getElementById('ooLogpw').style.display='none';           document.getElementById('ooLogot').style.display='block';           document.getElementById("ooLogpwO").value='';           document.getElementById("ooLogpwP").value='';           document.getElementById("ooLogpwQ").value='';           document.getElementById("ooLogpwR").innerHTML='';         }}       else if (search.indexOf("opLognk&")==0) {document.getElementById("ooLognkR").innerHTML = data;         if (data.indexOf("修改昵称成功")==0) {           document.getElementById("ooLogotN").innerHTML=data.substring(6);           document.getElementById('ooLognk').style.display='none';           document.getElementById('ooLogot').style.display='block';           document.getElementById("ooLognkP").value='';           document.getElementById("ooLognkK").value='';           document.getElementById("ooLognkR").innerHTML='';         }}       else if (search.indexOf("opViewAdd&")==0) {document.getElementById('vr'+data.substring(4)).innerHTML = data.substring(0,4);         if (data.indexOf("请先登入")==0) Load("ogUser.aspx");         else if (data.indexOf("吐槽成功")==0) Load('b'+data.substring(4));       }       else if (search.indexOf("opQuit&")==0) document.getElementById("ogQuitR").innerHTML = data;       else if (search.indexOf("opFind&")==0) document.getElementById("ogFindR").innerHTML = data;       else if (search.indexOf("opBack&")==0) document.getElementById("ogBackR").innerHTML = data;       else if (id.indexOf("Head")==2) {           document.getElementById("ooHead").innerHTML=data;           showSlides(slideIndex);           Load("ogFoot"+"&from="+ooFrom);       }       else if (id.indexOf("Foot")==2) {           document.getElementById("ooFoot").innerHTML=data;           Load(ooFind);       }       else if ((id.indexOf("oh")==0 || id.indexOf("on")==0) && document.getElementById(id)) {           document.getElementById(id).innerHTML=data;       }       else if (id.indexOf("o")==0 || id.indexOf("~")==0) {           document.getElementById("ooBody").innerHTML=data;           if (id.indexOf("Home")==2) window.scrollTo(0,0);           else Roll("ooBody");       }       else if (id.indexOf("c")==0 && document.getElementById(id)) {           document.getElementById(id).className="l";           document.getElementById(id).innerHTML=data;           location.hash=id;           Roll(id);           if (data.indexOf('.m3u8')>=0) {             var pid=data.match(/(id=")(\S*?)(")/);             var player = videojs('#'+pid[2]);           }       }       else {           document.getElementById("ooBody").innerHTML="<div class='l'>"+data+"</div>";           Roll("ooBody");           if (data.indexOf('.m3u8')>=0) {             var pid=data.match(/(id=")(\S*?)(")/);             var player = videojs('#'+pid[2]);           }       }     }      function Roll(id) {       window.scrollTo(0,document.getElementById(id).getBoundingClientRect().top+window.pageYOffset-45);       // setTimeout(function(){window.scrollTo(0,document.getElementById(id).getBoundingClientRect().top+window.pageYOffset-45);},2000);     }      var ooSign="";      var ooPath="";     var ooMyip="";      function Test(search) {       if (ooSign != "") {TestC(search); return;}       if (ooMyip != "") {TestB(search); return;}       jQuery.ajax({         url: "https://api.ipify.org/",         dataType: "text",         timeout: 8000,       })           .done(function(data) {         ooMyip = data;         TestB(search);       })       .fail(function() {         jQuery.ajax({           url: "https://ipapi.co/ip/",           dataType: "text",           timeout: 8000,         })         .done(function(data) {           sIps = data.replace("\n","").replace("\r\n","").split(",");           cIps = sIps.length;           ooMyip = sIps[cIps-1];           TestB(search);         })         .fail(function() {           setTimeout(function(){Test(search);},5000);         });       });     }      function TestB(search) {       if (ooSign != "") {TestC(search); return;}       data = "https://raw.githubusercontent.com/hanleyfg/Up/master/oShow.txt?" + Math.floor(Math.random()*90000000+10000000)         + ",https://bitbucket.org/polishloxr/uc/raw/master/oShow.txt?" + Math.floor(Math.random()*90000000+10000000);       sHosts = data.replace("\n","").replace("\r\n","").split(",");       cHosts = sHosts.length;       JoinB1(search, sHosts, 0, 0, cHosts);     }      function JoinB1(search, sHosts, iHosts, aHosts, cHosts) {       jQuery.ajax({         url: sHosts[iHosts],         dataType: "text",         timeout: 8000,       })           .done(function(data) {         iptr = parseInt(data.substr(0,4),16)-5;         addr = Decrypt(iptr, data.replace("\n","").replace("\r\n",""));         sHosts = addr.split(",");         cHosts = sHosts.length;         iHosts = Math.floor(Math.random()*cHosts);         JoinB2(search, sHosts, iHosts, 0, cHosts);       })       .fail(function() {         aHosts = aHosts + 1;              if (aHosts < cHosts) {iHosts = iHosts + 1; if (iHosts==cHosts) iHosts=0; JoinB1(search, sHosts, iHosts, aHosts, cHosts);}         else setTimeout(function(){TestB(search);},5000);       });     }      function JoinB2(search, sHosts, iHosts, aHosts, cHosts) {       jQuery.ajax({         url: sHosts[iHosts] + "oo.aspx?name=get_oosign&sign=" + Encrypt(ooMyip+"561133220354"),         dataType: "text",         timeout: 8000,       })           .done(function(data) {         ooSign = data;         TestC(search);       })       .fail(function() {         setTimeout(function(){TestB(search);},5000);       });     }      function TestC(search) {       if (ooPath != "") {TestD(search); return;}       data = "https://raw.githubusercontent.com/hanleyfg/Up/master/oShowz.txt?" + Math.floor(Math.random()*90000000+10000000)         + ",https://bitbucket.org/polishloxr/uc/raw/master/oShowz.txt?" + Math.floor(Math.random()*90000000+10000000);       sHosts = data.replace("\n","").replace("\r\n","").split(",");       cHosts = sHosts.length;       JoinC1(search, sHosts, 0, 0, cHosts);     }      function JoinC1(search, sHosts, iHosts, aHosts, cHosts) {       jQuery.ajax({         url: sHosts[iHosts],         dataType: "text",         timeout: 8000,       })           .done(function(data) {         iptr = parseInt(data.substr(0,4),16)-5;         addr = Decrypt(iptr, data.replace("\n","").replace("\r\n",""));         sHosts = addr.split(",");         cHosts = sHosts.length;         iHosts = Math.floor(Math.random()*cHosts);                 JoinC2(search, sHosts, iHosts, 0, cHosts);       })       .fail(function() {         aHosts = aHosts + 1;              if (aHosts < cHosts) {iHosts = iHosts + 1; if (iHosts==cHosts) iHosts=0; JoinC1(search, sHosts, iHosts, aHosts, cHosts);}         else setTimeout(function(){TestC(search);},5000);       });     }      function JoinC2(search, sHosts, iHosts, aHosts, cHosts) {       ooPath = sHosts[iHosts];       TestD(search);     }      function TestD(search) {       if (search.indexOf("&post=")>0)         jQuery.ajax({           type: "POST",           url: ooPath + "oo.aspx?name=get_ooshow&ag=" + search.substring(0,search.indexOf("&post=")) + "&sign=" + ooSign,           data: search.substring(search.indexOf("post=")),           dataType: "text",           timeout: 8000,         })             .done(function(data) {           Goto(search, data, ooPath);         })         .fail(function() {           ooPath = "";           setTimeout(function(){TestC(search);},5000);         });       else         jQuery.ajax({           url: ooPath + "oo.aspx?name=get_ooshow&ag=" + search + "&sign=" + ooSign,           dataType: "text",           timeout: 8000,         })             .done(function(data) {           Goto(search, data, ooPath);         })         .fail(function() {           ooPath = "";           setTimeout(function(){TestC(search);},5000);         });     }      function Goto(search, data, url) {       if (search.indexOf(".aspx")>0 || search.indexOf("r")==0)           {window.location.href = url + "oo.aspx?name=get_ooshow&ag=" + search + "&sign=" + ooSign; return;}       if (data.indexOf("^dir^")<0) Show(search,data);       else if (data.indexOf('.m3u8')<0) Show(search, data.replace(/\^dir\^/g,ooPath));       else Show(search, data.replace(/\^dir\^/g,ooPath));     }      function Decrypt(iptr, code)     {         var c="";         for(var i=4;i<code.length;i+=4){ c+=String.fromCharCode(parseInt(code.substr(i,4),16)+iptr); }         return c;       }      function Encrypt(s){function L(k,d){return(k<<d)|(k>>>(32-d))}function K(G,k){var I,d,F,H,x;F=(G&2147483648);H=(k&2147483648);I=(G&1073741824);d=(k&1073741824);x=(G&1073741823)+(k&1073741823);if(I&d){return(x^2147483648^F^H)}if(I|d){if(x&1073741824){return(x^3221225472^F^H)}else{return(x^1073741824^F^H)}}else{return(x^F^H)}}function r(d,F,k){return(d&F)|((~d)&k)}function q(d,F,k){return(d&k)|(F&(~k))}function p(d,F,k){return(d^F^k)}function n(d,F,k){return(F^(d|(~k)))}function u(G,F,aa,Z,k,H,I){G=K(G,K(K(r(F,aa,Z),k),I));return K(L(G,H),F)}function f(G,F,aa,Z,k,H,I){G=K(G,K(K(q(F,aa,Z),k),I));return K(L(G,H),F)}function D(G,F,aa,Z,k,H,I){G=K(G,K(K(p(F,aa,Z),k),I));return K(L(G,H),F)}function t(G,F,aa,Z,k,H,I){G=K(G,K(K(n(F,aa,Z),k),I));return K(L(G,H),F)}function e(G){var Z;var F=G.length;var x=F+8;var k=(x-(x%64))/64;var I=(k+1)*16;var aa=Array(I-1);var d=0;var H=0;while(H<F){Z=(H-(H%4))/4;d=(H%4)*8;aa[Z]=(aa[Z]| (G.charCodeAt(H)<<d));H++}Z=(H-(H%4))/4;d=(H%4)*8;aa[Z]=aa[Z]|(128<<d);aa[I-2]=F<<3;aa[I-1]=F>>>29;return aa}function B(x){var k="",F="",G,d;for(d=0;d<=3;d++){G=(x>>>(d*8))&255;F="0"+G.toString(16);k=k+F.substr(F.length-2,2)}return k}function J(k){k=k.replace(/rn/g,"n");var d="";for(var F=0;F<k.length;F++){var x=k.charCodeAt(F);if(x<128){d+=String.fromCharCode(x)}else{if((x>127)&&(x<2048)){d+=String.fromCharCode((x>>6)|192);d+=String.fromCharCode((x&63)|128)}else{d+=String.fromCharCode((x>>12)|224);d+=String.fromCharCode(((x>>6)&63)|128);d+=String.fromCharCode((x&63)|128)}}}return d}var C=Array();var P,h,E,v,g,Y,X,W,V;var S=7,Q=12,N=17,M=22;var A=5,z=9,y=14,w=20;var o=4,m=11,l=16,j=23;var U=6,T=10,R=15,O=21;s=J(s);C=e(s);Y=1732584193;X=4023233417;W=2562383102;V=271733878;for(P=0;P<C.length;P+=16){h=Y;E=X;v=W;g=V;Y=u(Y,X,W,V,C[P+0],S,3614090360);V=u(V,Y,X,W,C[P+1],Q,3905402710);W=u(W,V,Y,X,C[P+2],N,606105819);X=u(X,W,V,Y,C[P+3],M,3250441966);Y=u(Y,X,W,V,C[P+4],S,4118548399);V=u(V,Y,X,W,C[P+5],Q,1200080426);W=u(W,V,Y,X,C[P+6],N,2821735955);X=u(X,W,V,Y,C[P+7],M,4249261313);Y=u(Y,X,W,V,C[P+8],S,1770035416);V=u(V,Y,X,W,C[P+9],Q,2336552879);W=u(W,V,Y,X,C[P+10],N,4294925233);X=u(X,W,V,Y,C[P+11],M,2304563134);Y=u(Y,X,W,V,C[P+12],S,1804603682);V=u(V,Y,X,W,C[P+13],Q,4254626195);W=u(W,V,Y,X,C[P+14],N,2792965006);X=u(X,W,V,Y,C[P+15],M,1236535329);Y=f(Y,X,W,V,C[P+1],A,4129170786);V=f(V,Y,X,W,C[P+6],z,3225465664);W=f(W,V,Y,X,C[P+11],y,643717713);X=f(X,W,V,Y,C[P+0],w,3921069994);Y=f(Y,X,W,V,C[P+5],A,3593408605);V=f(V,Y,X,W,C[P+10],z,38016083);W=f(W,V,Y,X,C[P+15],y,3634488961);X=f(X,W,V,Y,C[P+4],w,3889429448);Y=f(Y,X,W,V,C[P+9],A,568446438);V=f(V,Y,X,W,C[P+14],z,3275163606);W=f(W,V,Y,X,C[P+3],y,4107603335);X=f(X,W,V,Y,C[P+8],w,1163531501);Y=f(Y,X,W,V,C[P+13],A,2850285829);V=f(V,Y,X,W,C[P+2],z,4243563512);W=f(W,V,Y,X,C[P+7],y,1735328473);X=f(X,W,V,Y,C[P+12],w,2368359562);Y=D(Y,X,W,V,C[P+5],o,4294588738);V=D(V,Y,X,W,C[P+8],m,2272392833);W=D(W,V,Y,X,C[P+11],l,1839030562);X=D(X,W,V,Y,C[P+14],j,4259657740);Y=D(Y,X,W,V,C[P+1],o,2763975236);V=D(V,Y,X,W,C[P+4],m,1272893353);W=D(W,V,Y,X,C[P+7],l,4139469664);X=D(X,W,V,Y,C[P+10],j,3200236656);Y=D(Y,X,W,V,C[P+13],o,681279174);V=D(V,Y,X,W,C[P+0],m,3936430074);W=D(W,V,Y,X,C[P+3],l,3572445317);X=D(X,W,V,Y,C[P+6],j,76029189);Y=D(Y,X,W,V,C[P+9],o,3654602809);V=D(V,Y,X,W,C[P+12],m,3873151461);W=D(W,V,Y,X,C[P+15],l,530742520);X=D(X,W,V,Y,C[P+2],j,3299628645);Y=t(Y,X,W,V,C[P+0],U,4096336452);V=t(V,Y,X,W,C[P+7],T,1126891415);W=t(W,V,Y,X,C[P+14],R,2878612391);X=t(X,W,V,Y,C[P+5],O,4237533241);Y=t(Y,X,W,V,C[P+12],U,1700485571);V=t(V,Y,X,W,C[P+3],T,2399980690);W=t(W,V,Y,X,C[P+10],R,4293915773);X=t(X,W,V,Y,C[P+1],O,2240044497);Y=t(Y,X,W,V,C[P+8],U,1873313359);V=t(V,Y,X,W,C[P+15],T,4264355552);W=t(W,V,Y,X,C[P+6],R,2734768916);X=t(X,W,V,Y,C[P+13],O,1309151649);Y=t(Y,X,W,V,C[P+4],U,4149444226);V=t(V,Y,X,W,C[P+11],T,3174756917);W=t(W,V,Y,X,C[P+2],R,718787259);X=t(X,W,V,Y,C[P+9],O,3951481745);Y=K(Y,h);X=K(X,E);W=K(W,v);V=K(V,g)}var i=B(Y)+B(X)+B(W)+B(V);return i.toLowerCase()};      function Cast(search) {      }      function Save(search) {        window.open(search);     }      Init();     </script>      <link  href="https://cdn.bootcss.com/video.js/5.20.0/video-js.min.css" rel="stylesheet">     <script src="https://cdn.bootcss.com/video.js/5.20.0/video.min.js"></script>     <script src="https://cdn.bootcss.com/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script> </body> </html>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,11,10,9">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body ontouchstart="">
+    <!-- 048 -->
+    <style type="text/css">
+        body {margin:12px; background:#fffff0; color:#303030; font-size:13px; font-family:Warnock,Georgia,Helvetica,Arial,Microsoft YaHei; line-height:24px;}
+        .cssload-crazy-arrow {position:fixed; top:0px; left:0px; right:0px; bottom:0px; margin:auto; width:32px; height:32px; border:3px solid #ff8000; background-color:#ff80ff; border-top-left-radius:50%; border-bottom-right-radius:50%; border-bottom-left-radius:50%; box-shadow:0px 0px 5px 3px rgba(255,255,224,0.8) inset; display:none; z-index:99999; animation: cssload-spin 1000ms infinite linear; -o-animation: cssload-spin 1000ms infinite linear; -ms-animation: cssload-spin 1000ms infinite linear; -webkit-animation: cssload-spin 1000ms infinite linear; -moz-animation: cssload-spin 1000ms infinite linear;}
+        @keyframes cssload-spin {100%{transform: rotate(360deg); transform: rotate(360deg);}}
+        @-o-keyframes cssload-spin {100%{-o-transform: rotate(360deg); transform: rotate(360deg);}}
+        @-ms-keyframes cssload-spin {100%{-ms-transform: rotate(360deg); transform: rotate(360deg);}}
+        @-webkit-keyframes cssload-spin {100%{-webkit-transform: rotate(360deg); transform: rotate(360deg);}}
+        @-moz-keyframes cssload-spin {100%{-moz-transform: rotate(360deg); transform: rotate(360deg);}}
+    </style>
+
+    <div id="ooWait" class="cssload-crazy-arrow"></div>
+    <div id="ooHead"></div>
+
+  <div class="main">
+    <div id="ooLogin" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+      <p>　　登入名称　<input id="ooLoginN" type="text" style="width:180px; border-width:0px;"></p>
+      <p>　　登入密码　<input id="ooLoginP" type="password" style="width:180px; border-width:0px;"></p>
+      <div class="buttoncontainer"><div class="button2"><a href="javascript:void(0);" onclick="javascript:Load('opLogin'
+        +'&loginn='+encodeURIComponent(document.getElementById('ooLoginN').value)
+        +'&loginp='+encodeURIComponent(document.getElementById('ooLoginP').value)
+        +'&from='+ooFrom);"><font class="link">登入</font></a></div></div>
+        <p style="text-align:center;"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogin').style.display='none';document.getElementById('ooLogup').style.display='block';"><font class="linv">注册新号</font></a></p>
+      <div id="ooLoginR" class="erro"></div>
+    </div></div></div>
+
+    <div id="ooLogup" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+      <p>　　注册名称　<input id="ooLogupN" type="text" style="width:180px; border-width:0px;"></p>
+      <p>　　注册密码　<input id="ooLogupP" type="password" style="width:180px; border-width:0px;"></p>
+      <p>　　重复密码　<input id="ooLogupQ" type="password" style="width:180px; border-width:0px;"></p>
+      <div class="buttoncontainer"><div class="button2"><a href="javascript:void(0);" onclick="javascript:Load('opLogup'
+        +'&logupn='+encodeURIComponent(document.getElementById('ooLogupN').value)
+        +'&logupp='+encodeURIComponent(document.getElementById('ooLogupP').value)
+        +'&logupq='+encodeURIComponent(document.getElementById('ooLogupQ').value)
+        +'&from='+ooFrom);"><font class="link">注册</font></a></div></div>
+      <p style="text-align:center;"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogin').style.display='block';document.getElementById('ooLogup').style.display='none';"><font class="linv">登入现有号</font></a></p>
+      <div id="ooLogupR" class="erro"></div>
+    </div></div></div>
+
+    <div id="ooLogot" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+      <div id="ooLogotN" style="text-align:center; font-size:15px; color:#d000ff;"></div>
+      <div style="height:6px;"></div>
+      <div class="buttoncontainer"><div class="button2"><a href="javascript:void(0);" onclick="javascript:ooUser='';ooPass='';document.getElementById('ooLogin').style.display='block';document.getElementById('ooLogot').style.display='none';"><font class="link">登出</font></a></div></div>
+      <p style="text-align:center;"><a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogot').style.display='none';document.getElementById('ooLognk').style.display='block';"><font class="linv">修改昵称</font></a>
+        &nbsp;<a href="javascript:void(0);" onclick="javascript:document.getElementById('ooLogot').style.display='none';document.getElementById('ooLogpw').style.display='block';"><font class="linv">修改密码</font></a>
+        &nbsp;<a href="javascript:void(0);" onclick="javascript:Load('opLike'+'&ooUser='+encodeURIComponent(ooUser)+'&ooPass='+encodeURIComponent(ooPass));"><font class="linv">我的收藏</font></a></p>
+    </div></div></div>
+
+    <div id="ooLogpw" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+      <p>　　现有密码　<input id="ooLogpwO" type="password" style="width:180px; border-width:0px;"></p>
+      <p>　　更新密码　<input id="ooLogpwP" type="password" style="width:180px; border-width:0px;"></p>
+      <p>　　重复密码　<input id="ooLogpwQ" type="password" style="width:180px; border-width:0px;"></p>
+      <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:Load('opLogpw'
+        +'&logpwn='+encodeURIComponent(ooUser)
+        +'&logpwo='+encodeURIComponent(document.getElementById('ooLogpwO').value)
+        +'&logpwp='+encodeURIComponent(document.getElementById('ooLogpwP').value)
+        +'&logpwq='+encodeURIComponent(document.getElementById('ooLogpwQ').value)
+        +'&from='+ooFrom);"><font class="link">修改密码</font></a></div></div>
+      <div id="ooLogpwR" class="erro"></div>
+    </div></div></div>
+
+    <div id="ooLognk" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+      <p>　　现有密码　<input id="ooLognkP" type="password" style="width:180px; border-width:0px;"></p>
+      <p>　　更新昵称　<input id="ooLognkK" type="text" style="width:180px; border-width:0px;"></p>
+      <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:Load('opLognk'
+        +'&lognkn='+encodeURIComponent(ooUser)
+        +'&lognkp='+encodeURIComponent(document.getElementById('ooLognkP').value)
+        +'&lognkk='+encodeURIComponent(document.getElementById('ooLognkK').value)
+        +'&from='+ooFrom);"><font class="link">修改昵称</font></a></div></div>
+      <div id="ooLognkR" class="erro"></div>
+    </div></div></div>
+
+    <div id="ogQuit" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+      <p>&#x6211;&#x53EB;&#xFF08;&#x53EF;&#x4EE5;&#x5316;&#x540D;&#xFF09;<input id="ogQuitN" type="text" style="width:180px; border-width:0px;"></p>
+      <p>&#x6211;&#x8981;&#xFF08;&#x53EF;&#x4EE5;&#x591A;&#x9009;&#xFF09;
+        <input id="ogQuit1" type="checkbox">&#x9000;&#x515A;
+        <input id="ogQuit2" type="checkbox">&#x9000;&#x56E2;
+        <input id="ogQuit3" type="checkbox">&#x9000;&#x961F;</p>
+      <p>&#x4EBA;&#x6570;&#xFF08;&#x53EF;&#x4EE5;&#x591A;&#x4EBA;&#xFF09;<input id="ogQuitC" type="text" style="width:180px; border-width:0px;"></p>
+      <p>&#x60F3;&#x8BF4;&#xFF08;&#x53EF;&#x4EE5;&#x9009;&#x586B;&#xFF09;<textarea id="ogQuitS" style="width:180px; border-width:0px;"></textarea></p>
+      <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:Load('opQuit'
+        +'&quitn='+encodeURIComponent(document.getElementById('ogQuitN').value)
+        +'&quit1='+encodeURIComponent(document.getElementById('ogQuit1').checked)
+        +'&quit2='+encodeURIComponent(document.getElementById('ogQuit2').checked)
+        +'&quit3='+encodeURIComponent(document.getElementById('ogQuit3').checked)
+        +'&quitc='+encodeURIComponent(document.getElementById('ogQuitC').value)
+        +'&quits='+encodeURIComponent(document.getElementById('ogQuitS').value)
+        +'&from='+ooFrom);">&#x6211;&#x8981;&#x529E;&#x7406;&#x4E09;&#x9000;</a></div></div>
+      <div id="ogQuitR" style="color:#ff0000"></div>
+      <div style="height:20px;"></div>
+      <p>&#x67E5;&#x8BE2;&#x5BC6;&#x7801;&#xFF08;&#x7F16;&#x53F7;&#xFF09;<input id="ogFindP" type="text" style="width:180px; border-width:0px;"></p>
+      <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:Load('opFind'
+        +'&findp='+encodeURIComponent(document.getElementById('ogFindP').value));">&#x662F;&#x5426;&#x529E;&#x7406;&#x6210;&#x529F;</a></div></div>
+      <div id="ogFindR" style="color:#ff0000"></div>
+      <div style="height:20px;"></div>
+    </div></div></div>
+
+    <div id="ogBack" class="l" style="display:none;"><div class="ca3v"><div style="width:296px; margin:0 auto;">
+      <p>&#x624B;&#x673A;&#xFF08;&#x53EF;&#x9009;&#x586B;&#xFF09;<input id="ogBackP" type="text" style="width:180px; border-width:0px;"></p>
+      <p>&#x7535;&#x90AE;&#xFF08;&#x53EF;&#x9009;&#x586B;&#xFF09;<input id="ogBackM" type="text" style="width:180px; border-width:0px;"></p>
+      <p>&#x53CD;&#x9988;&#xFF08;&#x542B;&#x4FB5;&#x6743;&#xFF09;<textarea id="ogBackF" style="width:180px; height:120px; border-width:0px;"></textarea></p>
+      <div class="buttoncontainer"><div class="button"><a href="javascript:void(0);" onclick="javascript:Load('opBack'
+        +'&backp='+encodeURIComponent(document.getElementById('ogBackP').value)
+        +'&backm='+encodeURIComponent(document.getElementById('ogBackM').value)
+        +'&backf='+encodeURIComponent(document.getElementById('ogBackF').value)
+        +'&from='+ooFrom);">&#x53CD;&#x9988;</a></div></div>
+      <div id="ogBackR" style="color:#ff0000"></div>
+      <div style="height:20px;"></div>
+    </div></div></div>
+  </div>
+    <div id="ooBody" class="main"></div>
+    <div id="ooFoot"></div>
+
+    <div style="clear:both; height:10px;"></div>
+
+    <script>
+    var ooFind="";
+    var ooFrom="";
+    var ooUser="";
+    var ooPass="";
+
+    var slideIndex = 1;
+    function plusSlides(n) {showSlides(slideIndex += n);}
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("slide");
+      var dots = document.getElementsByClassName("sldot");
+      slideIndex = n;
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < dots.length; i++) {dots[i].className = dots[i].className.replace(" active", "");}
+      dots[slideIndex-1].className += " active";
+      for (i = 0; i < slides.length; i++) {slides[i].style.display = "none";}
+      slides[slideIndex-1].style.display = "block";
+    }
+
+    var audioPlayer = new Audio();
+    audioPlayer.onended = function(){document.getElementsByClassName('player-container')[0].className='player-container';};
+
+    function Init() {
+      var q=location.search;
+      var f="";
+      if (q!="") q=q.substr(1);
+      if (q.indexOf("from=")>=0) {f=q.substring(q.indexOf("from=")); q=q.substring(0,q.indexOf("from="));}
+      if (q.indexOf("key=")>=0) {k=q.substring(q.indexOf("key=")); q=q.substring(0,q.indexOf("key=")).replace("&","");}
+      if (location.hash!="") q=location.hash.substring(1);
+      if (q=="") q="ogHome"; else q=q.replace("name=","");
+      if (f=="") f="ogHomeg"; else f=f.replace("from=","");
+      ooFrom=f;
+      ooFind=q;
+      Load("ogHead");
+    }
+
+    function Load(search) {
+      document.getElementById("ooWait").style.display = "block";
+
+      if (search.indexOf("ogUser.aspx")<0) {
+        document.getElementById("ooLogin").style.display = "none";
+        document.getElementById("ooLogup").style.display = "none";
+        document.getElementById("ooLogot").style.display = "none";
+        document.getElementById("ooLogpw").style.display = "none";
+        document.getElementById("ooLognk").style.display = "none";
+      }
+      else if (ooUser == "") {
+        document.getElementById("ooLoginR").innerHTML = "";
+        document.getElementById("ooLogupR").innerHTML = "";
+        document.getElementById("ooLogin").style.display = "block";
+        document.getElementById("ooLogup").style.display = "none";
+        document.getElementById("ooLogot").style.display = "none";
+        document.getElementById("ooLogpw").style.display = "none";
+        document.getElementById("ooLognk").style.display = "none";
+        document.getElementById("ooWait").style.display = "none";
+        window.scrollTo(0,0);
+        return;
+      }
+      else {
+        document.getElementById("ooLogpwR").innerHTML = "";
+        document.getElementById("ooLognkR").innerHTML = "";
+        document.getElementById("ooLogin").style.display = "none";
+        document.getElementById("ooLogup").style.display = "none";
+        document.getElementById("ooLogot").style.display = "block";
+        document.getElementById("ooLogpw").style.display = "none";
+        document.getElementById("ooLognk").style.display = "none";
+        document.getElementById("ooWait").style.display = "none";
+        window.scrollTo(0,0);
+        return;
+      }
+      if (search.indexOf("ogQuit.aspx")<0) document.getElementById("ogQuit").style.display = "none";
+      else {
+        document.getElementById("ogQuitR").innerHTML = "";
+        document.getElementById("ogFindR").innerHTML = "";
+        document.getElementById("ogQuit").style.display = "block";
+        search="ogQuit"+"&from="+ooFrom;
+      }
+      if (search.indexOf("ogBack.aspx")<0) document.getElementById("ogBack").style.display = "none";
+      else {
+        document.getElementById("ogBackR").innerHTML = "";
+        document.getElementById("ogBack").style.display = "block";
+        search="ogBack"+"&from="+ooFrom;
+      }
+
+      if (search.indexOf("opLogin&")==0) {
+        document.getElementById("ooLoginR").innerHTML = "";
+        document.getElementById("ooLogin").style.display = "block";
+      }
+      if (search.indexOf("opLogup&")==0) {
+        document.getElementById("ooLogupR").innerHTML = "";
+        document.getElementById("ooLogup").style.display = "block";
+      }
+      if (search.indexOf("opLogpw&")==0) {
+        document.getElementById("ooLogpwR").innerHTML = "";
+        document.getElementById("ooLogpw").style.display = "block";
+      }
+      if (search.indexOf("opLognk&")==0) {
+        document.getElementById("ooLognkR").innerHTML = "";
+        document.getElementById("ooLognk").style.display = "block";
+      }
+      if (search.indexOf("opQuit&")==0) {
+        document.getElementById("ogQuitR").innerHTML = "";
+        document.getElementById("ogQuit").style.display = "block";
+      }
+      if (search.indexOf("opFind&")==0) {
+        document.getElementById("ogFindR").innerHTML = "";
+        document.getElementById("ogQuit").style.display = "block";
+      }
+      if (search.indexOf("opBack&")==0) {
+        document.getElementById("ogBackR").innerHTML = "";
+        document.getElementById("ogBack").style.display = "block";
+      }
+      if (search.indexOf(".aspx")>0 || search.indexOf("r")==0) Test(search);
+      else Test(search);
+    }
+
+    function Show(search, data) {
+      document.getElementById("ooWait").style.display = "none";
+
+      var name=search;
+      if (name.indexOf("&")>0) name=name.substring(0,search.indexOf("&"));
+      if (name.indexOf("~")>0) name=name.substring(0,search.indexOf("~"));
+      var id=name;
+      if (id.indexOf("_")>0) id=id.substring(0,search.indexOf("_"));
+      id = decodeURI(id);
+
+      if (search.indexOf("i")==0) {
+          document.getElementById(id).innerHTML=data;
+          if (data.indexOf("请先登入")==0) Load("ogUser.aspx");
+      }
+      else if (search.indexOf("v")==0) {
+          document.getElementById(id).innerHTML=data;
+      }
+      else if (search.indexOf("b")==0) {
+          document.getElementById(id).innerHTML=data;
+          window.scrollTo(0,$("#"+id).offset().top-60);
+      }
+      else if (search.indexOf("opLogin&")==0) {document.getElementById("ooLoginR").innerHTML = data;
+        if (data.indexOf("登入成功")==0) {
+          ooUser=document.getElementById('ooLoginN').value;
+          ooPass=document.getElementById('ooLoginP').value;
+          document.getElementById("ooLogotN").innerHTML=data.substring(4);
+          document.getElementById('ooLogin').style.display='none';
+          document.getElementById('ooLogot').style.display='block';
+          document.getElementById("ooLoginN").value='';
+          document.getElementById("ooLoginP").value='';
+          document.getElementById("ooLoginR").innerHTML='';
+        }}
+      else if (search.indexOf("opLogup&")==0) {document.getElementById("ooLogupR").innerHTML = data;
+        if (data.indexOf("注册成功")==0) {
+          ooUser=document.getElementById('ooLogupN').value;
+          ooPass=document.getElementById('ooLogupP').value;
+          document.getElementById("ooLogotN").innerHTML=data.substring(4);
+          document.getElementById('ooLogup').style.display='none';
+          document.getElementById('ooLogot').style.display='block';
+          document.getElementById("ooLogupN").value='';
+          document.getElementById("ooLogupP").value='';
+          document.getElementById("ooLogupQ").value='';
+          document.getElementById("ooLogupR").innerHTML='';
+        }}
+      else if (search.indexOf("opLogpw&")==0) {document.getElementById("ooLogpwR").innerHTML = data;
+        if (data.indexOf("修改密码成功")==0) {
+          document.getElementById('ooLogpw').style.display='none';
+          document.getElementById('ooLogot').style.display='block';
+          document.getElementById("ooLogpwO").value='';
+          document.getElementById("ooLogpwP").value='';
+          document.getElementById("ooLogpwQ").value='';
+          document.getElementById("ooLogpwR").innerHTML='';
+        }}
+      else if (search.indexOf("opLognk&")==0) {document.getElementById("ooLognkR").innerHTML = data;
+        if (data.indexOf("修改昵称成功")==0) {
+          document.getElementById("ooLogotN").innerHTML=data.substring(6);
+          document.getElementById('ooLognk').style.display='none';
+          document.getElementById('ooLogot').style.display='block';
+          document.getElementById("ooLognkP").value='';
+          document.getElementById("ooLognkK").value='';
+          document.getElementById("ooLognkR").innerHTML='';
+        }}
+      else if (search.indexOf("opViewAdd&")==0) {document.getElementById('vr'+data.substring(4)).innerHTML = data.substring(0,4);
+        if (data.indexOf("请先登入")==0) Load("ogUser.aspx");
+        else if (data.indexOf("吐槽成功")==0) Load('b'+data.substring(4));
+      }
+      else if (search.indexOf("opQuit&")==0) document.getElementById("ogQuitR").innerHTML = data;
+      else if (search.indexOf("opFind&")==0) document.getElementById("ogFindR").innerHTML = data;
+      else if (search.indexOf("opBack&")==0) document.getElementById("ogBackR").innerHTML = data;
+      else if (id.indexOf("Head")==2) {
+          document.getElementById("ooHead").innerHTML=data;
+          showSlides(slideIndex);
+          Load("ogFoot"+"&from="+ooFrom);
+      }
+      else if (id.indexOf("Foot")==2) {
+          document.getElementById("ooFoot").innerHTML=data;
+          Load(ooFind);
+      }
+      else if ((id.indexOf("oh")==0 || id.indexOf("on")==0) && document.getElementById(id)) {
+          document.getElementById(id).innerHTML=data;
+      }
+      else if (id.indexOf("o")==0 || id.indexOf("~")==0) {
+          document.getElementById("ooBody").innerHTML=data;
+          if (id.indexOf("Home")==2) window.scrollTo(0,0);
+          else Roll("ooBody");
+      }
+      else if (id.indexOf("c")==0 && document.getElementById(id)) {
+          document.getElementById(id).className="l";
+          document.getElementById(id).innerHTML=data;
+          location.hash=id;
+          Roll(id);
+          if (data.indexOf('.m3u8')>=0) {
+            var pid=data.match(/(id=")(\S*?)(")/);
+            var player = videojs('#'+pid[2]);
+          }
+      }
+      else {
+          document.getElementById("ooBody").innerHTML="<div class='l'>"+data+"</div>";
+          Roll("ooBody");
+          if (data.indexOf('.m3u8')>=0) {
+            var pid=data.match(/(id=")(\S*?)(")/);
+            var player = videojs('#'+pid[2]);
+          }
+      }
+    }
+
+    function Roll(id) {
+      window.scrollTo(0,document.getElementById(id).getBoundingClientRect().top+window.pageYOffset-45);
+      // setTimeout(function(){window.scrollTo(0,document.getElementById(id).getBoundingClientRect().top+window.pageYOffset-45);},2000);
+    }
+
+    var ooSign=""; 
+    var ooPath="";
+    var ooMyip="";
+
+    function Test(search) {
+      if (ooSign != "") {TestC(search); return;}
+      if (ooMyip != "") {TestB(search); return;}
+      jQuery.ajax({
+        url: "https://api.ipify.org/",
+        dataType: "text",
+        timeout: 8000,
+      })    
+      .done(function(data) {
+        ooMyip = data;
+        TestB(search);
+      })
+      .fail(function() {
+        jQuery.ajax({
+          url: "https://ipapi.co/ip/",
+          dataType: "text",
+          timeout: 8000,
+        })
+        .done(function(data) {
+          sIps = data.replace("\n","").replace("\r\n","").split(",");
+          cIps = sIps.length;
+          ooMyip = sIps[cIps-1];
+          TestB(search);
+        })
+        .fail(function() {
+          setTimeout(function(){Test(search);},5000);
+        });
+      });
+    }
+
+    function TestB(search) {
+      if (ooSign != "") {TestC(search); return;}
+      data = "https://raw.githubusercontent.com/hanleyfg/Up/master/oShow.txt?" + Math.floor(Math.random()*90000000+10000000)
+        + ",https://bitbucket.org/polishloxr/uc/raw/master/oShow.txt?" + Math.floor(Math.random()*90000000+10000000);
+      sHosts = data.replace("\n","").replace("\r\n","").split(",");
+      cHosts = sHosts.length;
+      JoinB1(search, sHosts, 0, 0, cHosts);
+    }
+
+    function JoinB1(search, sHosts, iHosts, aHosts, cHosts) {
+      jQuery.ajax({
+        url: sHosts[iHosts],
+        dataType: "text",
+        timeout: 8000,
+      })    
+      .done(function(data) {
+        iptr = parseInt(data.substr(0,4),16)-5;
+        addr = Decrypt(iptr, data.replace("\n","").replace("\r\n",""));
+        sHosts = addr.split(",");
+        cHosts = sHosts.length;
+        iHosts = Math.floor(Math.random()*cHosts);
+        JoinB2(search, sHosts, iHosts, 0, cHosts);
+      })
+      .fail(function() {
+        aHosts = aHosts + 1;     
+        if (aHosts < cHosts) {iHosts = iHosts + 1; if (iHosts==cHosts) iHosts=0; JoinB1(search, sHosts, iHosts, aHosts, cHosts);}
+        else setTimeout(function(){TestB(search);},5000);
+      });
+    }
+
+    function JoinB2(search, sHosts, iHosts, aHosts, cHosts) {
+      jQuery.ajax({
+        url: sHosts[iHosts] + "oo.aspx?name=get_oosign&sign=" + Encrypt(ooMyip+"139883474093"),
+        dataType: "text",
+        timeout: 8000,
+      })    
+      .done(function(data) {
+        ooSign = data;
+        TestC(search);
+      })
+      .fail(function() {
+        setTimeout(function(){TestB(search);},5000);
+      });
+    }
+
+    function TestC(search) {
+      if (ooPath != "") {TestD(search); return;}
+      data = "https://raw.githubusercontent.com/hanleyfg/Up/master/oShowz.txt?" + Math.floor(Math.random()*90000000+10000000)
+        + ",https://bitbucket.org/polishloxr/uc/raw/master/oShowz.txt?" + Math.floor(Math.random()*90000000+10000000);
+      sHosts = data.replace("\n","").replace("\r\n","").split(",");
+      cHosts = sHosts.length;
+      JoinC1(search, sHosts, 0, 0, cHosts);
+    }
+
+    function JoinC1(search, sHosts, iHosts, aHosts, cHosts) {
+      jQuery.ajax({
+        url: sHosts[iHosts],
+        dataType: "text",
+        timeout: 8000,
+      })    
+      .done(function(data) {
+        iptr = parseInt(data.substr(0,4),16)-5;
+        addr = Decrypt(iptr, data.replace("\n","").replace("\r\n",""));
+        sHosts = addr.split(",");
+        cHosts = sHosts.length;
+        iHosts = Math.floor(Math.random()*cHosts);        
+        JoinC2(search, sHosts, iHosts, 0, cHosts);
+      })
+      .fail(function() {
+        aHosts = aHosts + 1;     
+        if (aHosts < cHosts) {iHosts = iHosts + 1; if (iHosts==cHosts) iHosts=0; JoinC1(search, sHosts, iHosts, aHosts, cHosts);}
+        else setTimeout(function(){TestC(search);},5000);
+      });
+    }
+
+    function JoinC2(search, sHosts, iHosts, aHosts, cHosts) {
+      ooPath = sHosts[iHosts];
+      TestD(search);
+    }
+
+    function TestD(search) {
+      if (search.indexOf("&post=")>0)
+        jQuery.ajax({
+          type: "POST",
+          url: ooPath + "oo.aspx?name=get_ooshow&ag=" + search.substring(0,search.indexOf("&post=")) + "&sign=" + ooSign,
+          data: search.substring(search.indexOf("post=")),
+          dataType: "text",
+          timeout: 8000,
+        })    
+        .done(function(data) {
+          Goto(search, data, ooPath);
+        })
+        .fail(function() {
+          ooPath = "";
+          setTimeout(function(){TestC(search);},5000);
+        });
+      else
+        jQuery.ajax({
+          url: ooPath + "oo.aspx?name=get_ooshow&ag=" + search + "&sign=" + ooSign,
+          dataType: "text",
+          timeout: 8000,
+        })    
+        .done(function(data) {
+          Goto(search, data, ooPath);
+        })
+        .fail(function() {
+          ooPath = "";
+          setTimeout(function(){TestC(search);},5000);
+        });
+    }
+
+    function Goto(search, data, url) {
+      if (search.indexOf(".aspx")>0 || search.indexOf("r")==0)
+          {window.location.href = url + "oo.aspx?name=get_ooshow&ag=" + search + "&sign=" + ooSign; return;}
+      if (data.indexOf("^dir^")<0) Show(search,data);
+      else if (data.indexOf('.m3u8')<0) Show(search, data.replace(/\^dir\^/g,ooPath));
+      else Show(search, data.replace(/\^dir\^/g,ooPath));
+    }
+
+    function Decrypt(iptr, code)
+    {  
+      var c="";  
+      for(var i=4;i<code.length;i+=4){ c+=String.fromCharCode(parseInt(code.substr(i,4),16)+iptr); }  
+      return c;  
+    }
+
+    function Encrypt(s){function L(k,d){return(k<<d)|(k>>>(32-d))}function K(G,k){var I,d,F,H,x;F=(G&2147483648);H=(k&2147483648);I=(G&1073741824);d=(k&1073741824);x=(G&1073741823)+(k&1073741823);if(I&d){return(x^2147483648^F^H)}if(I|d){if(x&1073741824){return(x^3221225472^F^H)}else{return(x^1073741824^F^H)}}else{return(x^F^H)}}function r(d,F,k){return(d&F)|((~d)&k)}function q(d,F,k){return(d&k)|(F&(~k))}function p(d,F,k){return(d^F^k)}function n(d,F,k){return(F^(d|(~k)))}function u(G,F,aa,Z,k,H,I){G=K(G,K(K(r(F,aa,Z),k),I));return K(L(G,H),F)}function f(G,F,aa,Z,k,H,I){G=K(G,K(K(q(F,aa,Z),k),I));return K(L(G,H),F)}function D(G,F,aa,Z,k,H,I){G=K(G,K(K(p(F,aa,Z),k),I));return K(L(G,H),F)}function t(G,F,aa,Z,k,H,I){G=K(G,K(K(n(F,aa,Z),k),I));return K(L(G,H),F)}function e(G){var Z;var F=G.length;var x=F+8;var k=(x-(x%64))/64;var I=(k+1)*16;var aa=Array(I-1);var d=0;var H=0;while(H<F){Z=(H-(H%4))/4;d=(H%4)*8;aa[Z]=(aa[Z]| (G.charCodeAt(H)<<d));H++}Z=(H-(H%4))/4;d=(H%4)*8;aa[Z]=aa[Z]|(128<<d);aa[I-2]=F<<3;aa[I-1]=F>>>29;return aa}function B(x){var k="",F="",G,d;for(d=0;d<=3;d++){G=(x>>>(d*8))&255;F="0"+G.toString(16);k=k+F.substr(F.length-2,2)}return k}function J(k){k=k.replace(/rn/g,"n");var d="";for(var F=0;F<k.length;F++){var x=k.charCodeAt(F);if(x<128){d+=String.fromCharCode(x)}else{if((x>127)&&(x<2048)){d+=String.fromCharCode((x>>6)|192);d+=String.fromCharCode((x&63)|128)}else{d+=String.fromCharCode((x>>12)|224);d+=String.fromCharCode(((x>>6)&63)|128);d+=String.fromCharCode((x&63)|128)}}}return d}var C=Array();var P,h,E,v,g,Y,X,W,V;var S=7,Q=12,N=17,M=22;var A=5,z=9,y=14,w=20;var o=4,m=11,l=16,j=23;var U=6,T=10,R=15,O=21;s=J(s);C=e(s);Y=1732584193;X=4023233417;W=2562383102;V=271733878;for(P=0;P<C.length;P+=16){h=Y;E=X;v=W;g=V;Y=u(Y,X,W,V,C[P+0],S,3614090360);V=u(V,Y,X,W,C[P+1],Q,3905402710);W=u(W,V,Y,X,C[P+2],N,606105819);X=u(X,W,V,Y,C[P+3],M,3250441966);Y=u(Y,X,W,V,C[P+4],S,4118548399);V=u(V,Y,X,W,C[P+5],Q,1200080426);W=u(W,V,Y,X,C[P+6],N,2821735955);X=u(X,W,V,Y,C[P+7],M,4249261313);Y=u(Y,X,W,V,C[P+8],S,1770035416);V=u(V,Y,X,W,C[P+9],Q,2336552879);W=u(W,V,Y,X,C[P+10],N,4294925233);X=u(X,W,V,Y,C[P+11],M,2304563134);Y=u(Y,X,W,V,C[P+12],S,1804603682);V=u(V,Y,X,W,C[P+13],Q,4254626195);W=u(W,V,Y,X,C[P+14],N,2792965006);X=u(X,W,V,Y,C[P+15],M,1236535329);Y=f(Y,X,W,V,C[P+1],A,4129170786);V=f(V,Y,X,W,C[P+6],z,3225465664);W=f(W,V,Y,X,C[P+11],y,643717713);X=f(X,W,V,Y,C[P+0],w,3921069994);Y=f(Y,X,W,V,C[P+5],A,3593408605);V=f(V,Y,X,W,C[P+10],z,38016083);W=f(W,V,Y,X,C[P+15],y,3634488961);X=f(X,W,V,Y,C[P+4],w,3889429448);Y=f(Y,X,W,V,C[P+9],A,568446438);V=f(V,Y,X,W,C[P+14],z,3275163606);W=f(W,V,Y,X,C[P+3],y,4107603335);X=f(X,W,V,Y,C[P+8],w,1163531501);Y=f(Y,X,W,V,C[P+13],A,2850285829);V=f(V,Y,X,W,C[P+2],z,4243563512);W=f(W,V,Y,X,C[P+7],y,1735328473);X=f(X,W,V,Y,C[P+12],w,2368359562);Y=D(Y,X,W,V,C[P+5],o,4294588738);V=D(V,Y,X,W,C[P+8],m,2272392833);W=D(W,V,Y,X,C[P+11],l,1839030562);X=D(X,W,V,Y,C[P+14],j,4259657740);Y=D(Y,X,W,V,C[P+1],o,2763975236);V=D(V,Y,X,W,C[P+4],m,1272893353);W=D(W,V,Y,X,C[P+7],l,4139469664);X=D(X,W,V,Y,C[P+10],j,3200236656);Y=D(Y,X,W,V,C[P+13],o,681279174);V=D(V,Y,X,W,C[P+0],m,3936430074);W=D(W,V,Y,X,C[P+3],l,3572445317);X=D(X,W,V,Y,C[P+6],j,76029189);Y=D(Y,X,W,V,C[P+9],o,3654602809);V=D(V,Y,X,W,C[P+12],m,3873151461);W=D(W,V,Y,X,C[P+15],l,530742520);X=D(X,W,V,Y,C[P+2],j,3299628645);Y=t(Y,X,W,V,C[P+0],U,4096336452);V=t(V,Y,X,W,C[P+7],T,1126891415);W=t(W,V,Y,X,C[P+14],R,2878612391);X=t(X,W,V,Y,C[P+5],O,4237533241);Y=t(Y,X,W,V,C[P+12],U,1700485571);V=t(V,Y,X,W,C[P+3],T,2399980690);W=t(W,V,Y,X,C[P+10],R,4293915773);X=t(X,W,V,Y,C[P+1],O,2240044497);Y=t(Y,X,W,V,C[P+8],U,1873313359);V=t(V,Y,X,W,C[P+15],T,4264355552);W=t(W,V,Y,X,C[P+6],R,2734768916);X=t(X,W,V,Y,C[P+13],O,1309151649);Y=t(Y,X,W,V,C[P+4],U,4149444226);V=t(V,Y,X,W,C[P+11],T,3174756917);W=t(W,V,Y,X,C[P+2],R,718787259);X=t(X,W,V,Y,C[P+9],O,3951481745);Y=K(Y,h);X=K(X,E);W=K(W,v);V=K(V,g)}var i=B(Y)+B(X)+B(W)+B(V);return i.toLowerCase()};
+
+    function Cast(search) {
+
+    }
+
+    function Save(search) {
+
+      window.open(search);
+    }
+
+    Init();
+    </script>
+
+    <link  href="https://cdn.bootcss.com/video.js/5.20.0/video-js.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/video.js/5.20.0/video.min.js"></script>
+    <script src="https://cdn.bootcss.com/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+</body>
+</html>
